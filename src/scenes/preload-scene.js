@@ -1,0 +1,96 @@
+import Phaser from '../phaser.min';
+import bugSprite from '../assets/bug-sprite.png';
+
+export default class PreloaderScene extends Phaser.Scene {
+  constructor() {
+    super('Preloader');
+  }
+
+  preload() {
+    // add logo image
+    const bg = this.add.image(350, 320, 'background');
+    bg.setDisplaySize(700, 640);
+
+    // display progress bar
+    const progressBar = this.add.graphics();
+    const progressBox = this.add.graphics();
+    progressBox.fillStyle(0x222222, 0.7);
+    progressBox.fillRect(200, 270, 300, 50);
+
+    const { width } = this.cameras.main;
+    const { height } = this.cameras.main;
+    const loadingText = this.make.text({
+      x: width / 2,
+      y: height / 2 - 70,
+      text: 'Loading...',
+      style: {
+        font: '20px monospace',
+        fill: '#ffffff',
+      },
+    });
+    loadingText.setOrigin(0.5, 0.5);
+
+    const percentText = this.make.text({
+      x: width / 2,
+      y: height / 2 - 24,
+      text: '0%',
+      style: {
+        font: '18px monospace',
+        fill: '#ffffff',
+      },
+    });
+    percentText.setOrigin(0.5, 0.5);
+
+    const assetText = this.make.text({
+      x: width / 2,
+      y: height / 2 + 50,
+      text: '',
+      style: {
+        font: '18px monospace',
+        fill: '#ffffff',
+      },
+    });
+    assetText.setOrigin(0.5, 0.5);
+
+    // update progress bar
+    this.load.on('progress', value => {
+      percentText.setText(`${Math.floor(value * 100, 1)}%`);
+      progressBar.clear();
+      progressBar.fillStyle(0x09ff00, 1);
+      progressBar.fillRect(210, 280, 280 * value, 30);
+    });
+
+    // update file progress text
+    this.load.on('fileprogress', file => {
+      assetText.setText(`Loading ${file.key}`);
+    });
+
+    // remove progress bar when complete
+    this.load.on('complete', () => {
+      loadingText.setText('Done!');
+      assetText.destroy();
+      this.ready();
+    });
+
+    this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
+
+    // load assets needed in our game
+    this.load.spritesheet('bugSprite', bugSprite, {
+      frameWidth: 478,
+      frameHeight: 396,
+      startFrame: 1,
+      endFrame: 4,
+    });
+  }
+
+  init() {
+    this.readyCount = 0;
+  }
+
+  ready() {
+    this.readyCount += 1;
+    if (this.readyCount === 2) {
+      this.scene.start('Title');
+    }
+  }
+}
