@@ -1,5 +1,10 @@
 import Phaser from '../phaser.min';
 import bugSprite from '../assets/bug-sprite.png';
+import base from '../assets/base.png';
+import turret from '../assets/turret.png';
+import logo from '../assets/logo.png';
+import titleBg from '../assets/title-bg.jpg';
+import titleBug from '../assets/spider.png';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -72,9 +77,14 @@ export default class PreloaderScene extends Phaser.Scene {
       this.ready();
     });
 
-    this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
+    this.timedEvent = this.time.delayedCall(2000, this.ready, [], this);
 
     // load assets needed in our game
+    this.load.image('logo', logo);
+    this.load.image('titleBug', titleBug);
+    this.load.image('titleBackground', titleBg);
+    this.load.image('base', base);
+    this.load.image('turret', turret);
     this.load.spritesheet('bugSprite', bugSprite, {
       frameWidth: 478,
       frameHeight: 396,
