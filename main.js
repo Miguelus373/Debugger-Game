@@ -9,6 +9,17 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/assets/base.png":
+/*!*****************************!*\
+  !*** ./src/assets/base.png ***!
+  \*****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"0a6cca8144f093142eaa.png\";\n\n//# sourceURL=webpack://shooter-game/./src/assets/base.png?");
+
+/***/ }),
+
 /***/ "./src/assets/bg.jpg":
 /*!***************************!*\
   !*** ./src/assets/bg.jpg ***!
@@ -31,6 +42,50 @@ eval("module.exports = __webpack_require__.p + \"c2f0dbc0cae45ba18e3b.png\";\n\n
 
 /***/ }),
 
+/***/ "./src/assets/logo.png":
+/*!*****************************!*\
+  !*** ./src/assets/logo.png ***!
+  \*****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"e33bd90df1488b496b82.png\";\n\n//# sourceURL=webpack://shooter-game/./src/assets/logo.png?");
+
+/***/ }),
+
+/***/ "./src/assets/spider.png":
+/*!*******************************!*\
+  !*** ./src/assets/spider.png ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"2c0b3a632849f04e535b.png\";\n\n//# sourceURL=webpack://shooter-game/./src/assets/spider.png?");
+
+/***/ }),
+
+/***/ "./src/assets/title-bg.jpg":
+/*!*********************************!*\
+  !*** ./src/assets/title-bg.jpg ***!
+  \*********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"00bfcf1e76e8d65df38c.jpg\";\n\n//# sourceURL=webpack://shooter-game/./src/assets/title-bg.jpg?");
+
+/***/ }),
+
+/***/ "./src/assets/turret.png":
+/*!*******************************!*\
+  !*** ./src/assets/turret.png ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"5a33e0cda912a541510b.png\";\n\n//# sourceURL=webpack://shooter-game/./src/assets/turret.png?");
+
+/***/ }),
+
 /***/ "./src/config.js":
 /*!***********************!*\
   !*** ./src/config.js ***!
@@ -42,6 +97,28 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/helpers/buttons.js":
+/*!********************************!*\
+  !*** ./src/helpers/buttons.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ createButton\n/* harmony export */ });\nconst createButton = (x, y, text, game) => {\n  const buttonBox = game.add.graphics()\n    .fillStyle(0x1ca1d6, 0.9)\n    .fillRoundedRect(-150, -25, 300, 50, 15);\n\n  const buttonText = game.add.text(0, 0, text, { fontSize: '30px', fill: '#fff' })\n    .setOrigin(0.5, 0.5);\n\n  game.add.container(x, y, [buttonBox, buttonText])\n    .setSize(300, 50)\n    .setInteractive();\n};\n\n\n\n//# sourceURL=webpack://shooter-game/./src/helpers/buttons.js?");
+
+/***/ }),
+
+/***/ "./src/helpers/release-bug.js":
+/*!************************************!*\
+  !*** ./src/helpers/release-bug.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ releaseBug\n/* harmony export */ });\nconst releaseBug = (n, game) => {\n  let bug;\n  let container;\n  const words = ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Eco'];\n\n  while (n > 0) {\n    bug = game.physics.add.sprite(0, 0, 'bugSprite');\n    bug.setScale(0.2);\n\n    bug.anims.play('go', true);\n\n    const bugText = game.add.text(-48, -60, words[n - 1], {\n      fontSize: '18px',\n      fill: '#fff',\n    });\n\n    container = game.add.container(48 + (Math.random() * 604), 50, [bug, bugText]);\n    container.setSize(bug.width * 0.2, bug.height * 0.2)\n      .setInteractive();\n\n    game.physics.world.enableBody(container);\n\n    container.body.setBounce(1)\n      .setCollideWorldBounds(true)\n      .setVelocityY(Math.random() * 40)\n      .setVelocityX(Math.random() * (container.x > 350 ? -100 : 100));\n\n    n -= 1;\n  }\n\n  return bug;\n};\n\n\n\n//# sourceURL=webpack://shooter-game/./src/helpers/release-bug.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -49,7 +126,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./phaser.min */ \"./src/phaser.min.js\");\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_phaser_min__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ \"./src/config.js\");\n/* harmony import */ var _scenes_boot_scene__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scenes/boot-scene */ \"./src/scenes/boot-scene.js\");\n/* harmony import */ var _scenes_preload_scene__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scenes/preload-scene */ \"./src/scenes/preload-scene.js\");\n/* harmony import */ var _scenes_game_scene__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scenes/game-scene */ \"./src/scenes/game-scene.js\");\n\n\n\n\n\n\nclass Game extends (_phaser_min__WEBPACK_IMPORTED_MODULE_0___default().Game) {\n  constructor() {\n    super(_config__WEBPACK_IMPORTED_MODULE_1__.default);\n    this.scene.add('Boot', _scenes_boot_scene__WEBPACK_IMPORTED_MODULE_2__.default);\n    this.scene.add('Preloader', _scenes_preload_scene__WEBPACK_IMPORTED_MODULE_3__.default);\n    // this.scene.add('Title', TitleScene);\n    this.scene.add('Game', _scenes_game_scene__WEBPACK_IMPORTED_MODULE_4__.default);\n    this.scene.start('Boot');\n  }\n}\n\nwindow.game = new Game();\n\n//# sourceURL=webpack://shooter-game/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./phaser.min */ \"./src/phaser.min.js\");\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_phaser_min__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ \"./src/config.js\");\n/* harmony import */ var _scenes_boot_scene__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scenes/boot-scene */ \"./src/scenes/boot-scene.js\");\n/* harmony import */ var _scenes_preload_scene__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scenes/preload-scene */ \"./src/scenes/preload-scene.js\");\n/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scenes/title-scene */ \"./src/scenes/title-scene.js\");\n/* harmony import */ var _scenes_game_scene__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scenes/game-scene */ \"./src/scenes/game-scene.js\");\n\n\n\n\n\n\n\nclass Game extends (_phaser_min__WEBPACK_IMPORTED_MODULE_0___default().Game) {\n  constructor() {\n    super(_config__WEBPACK_IMPORTED_MODULE_1__.default);\n    this.scene.add('Boot', _scenes_boot_scene__WEBPACK_IMPORTED_MODULE_2__.default);\n    this.scene.add('Preloader', _scenes_preload_scene__WEBPACK_IMPORTED_MODULE_3__.default);\n    this.scene.add('Title', _scenes_title_scene__WEBPACK_IMPORTED_MODULE_4__.default);\n    this.scene.add('Game', _scenes_game_scene__WEBPACK_IMPORTED_MODULE_5__.default);\n    this.scene.start('Boot');\n  }\n}\n\nwindow.game = new Game();\n\n//# sourceURL=webpack://shooter-game/./src/index.js?");
 
 /***/ }),
 
@@ -81,7 +158,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ GameScene\n/* harmony export */ });\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../phaser.min */ \"./src/phaser.min.js\");\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_phaser_min__WEBPACK_IMPORTED_MODULE_0__);\n\n\nlet bug;\nclass GameScene extends (_phaser_min__WEBPACK_IMPORTED_MODULE_0___default().Scene) {\n  constructor() {\n    super('Game');\n  }\n\n  create() {\n    const bg = this.add.image(350, 320, 'background');\n    bg.setDisplaySize(700, 640);\n\n    bug = this.physics.add.sprite(400, 50, 'bugSprite');\n    bug.setScale(0.2);\n\n    this.anims.create({\n      key: 'go',\n      frames: this.anims.generateFrameNumbers('bugSprite', { start: 0, end: 3 }),\n      frameRate: 8,\n      repeat: -1,\n    });\n  }\n\n  update() {\n    bug.anims.play('go', true);\n    bug.setVelocityY(70);\n  }\n}\n\n//# sourceURL=webpack://shooter-game/./src/scenes/game-scene.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ GameScene\n/* harmony export */ });\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../phaser.min */ \"./src/phaser.min.js\");\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_phaser_min__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _helpers_release_bug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers/release-bug */ \"./src/helpers/release-bug.js\");\n\n\n\nclass GameScene extends (_phaser_min__WEBPACK_IMPORTED_MODULE_0___default().Scene) {\n  constructor() {\n    super('Game');\n  }\n\n  create() {\n    this.add.image(350, 320, 'background').setDisplaySize(700, 640);\n    this.add.image(350, 590, 'base').setScale(0.15);\n\n    const turret = this.add.image(350, 575, 'turret');\n    turret.setScale(0.15);\n\n    this.anims.create({\n      key: 'go',\n      frames: this.anims.generateFrameNumbers('bugSprite', { start: 0, end: 3 }),\n      frameRate: 8,\n      repeat: -1,\n    });\n\n    (0,_helpers_release_bug__WEBPACK_IMPORTED_MODULE_1__.default)(5, this);\n  }\n}\n\n//# sourceURL=webpack://shooter-game/./src/scenes/game-scene.js?");
 
 /***/ }),
 
@@ -92,7 +169,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ PreloaderScene\n/* harmony export */ });\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../phaser.min */ \"./src/phaser.min.js\");\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_phaser_min__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _assets_bug_sprite_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/bug-sprite.png */ \"./src/assets/bug-sprite.png\");\n\n\n\nclass PreloaderScene extends (_phaser_min__WEBPACK_IMPORTED_MODULE_0___default().Scene) {\n  constructor() {\n    super('Preloader');\n  }\n\n  preload() {\n    // add logo image\n    const bg = this.add.image(350, 320, 'background');\n    bg.setDisplaySize(700, 640);\n\n    // display progress bar\n    const progressBar = this.add.graphics();\n    const progressBox = this.add.graphics();\n    progressBox.fillStyle(0x222222, 0.7);\n    progressBox.fillRect(200, 270, 300, 50);\n\n    const { width } = this.cameras.main;\n    const { height } = this.cameras.main;\n    const loadingText = this.make.text({\n      x: width / 2,\n      y: height / 2 - 70,\n      text: 'Loading...',\n      style: {\n        font: '20px monospace',\n        fill: '#ffffff',\n      },\n    });\n    loadingText.setOrigin(0.5, 0.5);\n\n    const percentText = this.make.text({\n      x: width / 2,\n      y: height / 2 - 24,\n      text: '0%',\n      style: {\n        font: '18px monospace',\n        fill: '#ffffff',\n      },\n    });\n    percentText.setOrigin(0.5, 0.5);\n\n    const assetText = this.make.text({\n      x: width / 2,\n      y: height / 2 + 50,\n      text: '',\n      style: {\n        font: '18px monospace',\n        fill: '#ffffff',\n      },\n    });\n    assetText.setOrigin(0.5, 0.5);\n\n    // update progress bar\n    this.load.on('progress', value => {\n      percentText.setText(`${Math.floor(value * 100, 1)}%`);\n      progressBar.clear();\n      progressBar.fillStyle(0x09ff00, 1);\n      progressBar.fillRect(210, 280, 280 * value, 30);\n    });\n\n    // update file progress text\n    this.load.on('fileprogress', file => {\n      assetText.setText(`Loading ${file.key}`);\n    });\n\n    // remove progress bar when complete\n    this.load.on('complete', () => {\n      loadingText.setText('Done!');\n      assetText.destroy();\n      this.ready();\n    });\n\n    this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);\n\n    // load assets needed in our game\n    this.load.spritesheet('bugSprite', _assets_bug_sprite_png__WEBPACK_IMPORTED_MODULE_1__, {\n      frameWidth: 478,\n      frameHeight: 396,\n      startFrame: 1,\n      endFrame: 4,\n    });\n  }\n\n  init() {\n    this.readyCount = 0;\n  }\n\n  ready() {\n    this.readyCount += 1;\n    if (this.readyCount === 2) {\n      this.scene.start('Title');\n    }\n  }\n}\n\n//# sourceURL=webpack://shooter-game/./src/scenes/preload-scene.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ PreloaderScene\n/* harmony export */ });\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../phaser.min */ \"./src/phaser.min.js\");\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_phaser_min__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _assets_bug_sprite_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/bug-sprite.png */ \"./src/assets/bug-sprite.png\");\n/* harmony import */ var _assets_base_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/base.png */ \"./src/assets/base.png\");\n/* harmony import */ var _assets_turret_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/turret.png */ \"./src/assets/turret.png\");\n/* harmony import */ var _assets_logo_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/logo.png */ \"./src/assets/logo.png\");\n/* harmony import */ var _assets_title_bg_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../assets/title-bg.jpg */ \"./src/assets/title-bg.jpg\");\n/* harmony import */ var _assets_spider_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../assets/spider.png */ \"./src/assets/spider.png\");\n\n\n\n\n\n\n\n\nclass PreloaderScene extends (_phaser_min__WEBPACK_IMPORTED_MODULE_0___default().Scene) {\n  constructor() {\n    super('Preloader');\n  }\n\n  preload() {\n    // add logo image\n    const bg = this.add.image(350, 320, 'background');\n    bg.setDisplaySize(700, 640);\n\n    // display progress bar\n    const progressBar = this.add.graphics();\n    const progressBox = this.add.graphics();\n    progressBox.fillStyle(0x222222, 0.7);\n    progressBox.fillRect(200, 270, 300, 50);\n\n    const { width } = this.cameras.main;\n    const { height } = this.cameras.main;\n    const loadingText = this.make.text({\n      x: width / 2,\n      y: height / 2 - 70,\n      text: 'Loading...',\n      style: {\n        font: '20px monospace',\n        fill: '#ffffff',\n      },\n    });\n    loadingText.setOrigin(0.5, 0.5);\n\n    const percentText = this.make.text({\n      x: width / 2,\n      y: height / 2 - 24,\n      text: '0%',\n      style: {\n        font: '18px monospace',\n        fill: '#ffffff',\n      },\n    });\n    percentText.setOrigin(0.5, 0.5);\n\n    const assetText = this.make.text({\n      x: width / 2,\n      y: height / 2 + 50,\n      text: '',\n      style: {\n        font: '18px monospace',\n        fill: '#ffffff',\n      },\n    });\n    assetText.setOrigin(0.5, 0.5);\n\n    // update progress bar\n    this.load.on('progress', value => {\n      percentText.setText(`${Math.floor(value * 100, 1)}%`);\n      progressBar.clear();\n      progressBar.fillStyle(0x09ff00, 1);\n      progressBar.fillRect(210, 280, 280 * value, 30);\n    });\n\n    // update file progress text\n    this.load.on('fileprogress', file => {\n      assetText.setText(`Loading ${file.key}`);\n    });\n\n    // remove progress bar when complete\n    this.load.on('complete', () => {\n      loadingText.setText('Done!');\n      assetText.destroy();\n      this.ready();\n    });\n\n    this.timedEvent = this.time.delayedCall(2000, this.ready, [], this);\n\n    // load assets needed in our game\n    this.load.image('logo', _assets_logo_png__WEBPACK_IMPORTED_MODULE_4__);\n    this.load.image('titleBug', _assets_spider_png__WEBPACK_IMPORTED_MODULE_6__);\n    this.load.image('titleBackground', _assets_title_bg_jpg__WEBPACK_IMPORTED_MODULE_5__);\n    this.load.image('base', _assets_base_png__WEBPACK_IMPORTED_MODULE_2__);\n    this.load.image('turret', _assets_turret_png__WEBPACK_IMPORTED_MODULE_3__);\n    this.load.spritesheet('bugSprite', _assets_bug_sprite_png__WEBPACK_IMPORTED_MODULE_1__, {\n      frameWidth: 478,\n      frameHeight: 396,\n      startFrame: 1,\n      endFrame: 4,\n    });\n  }\n\n  init() {\n    this.readyCount = 0;\n  }\n\n  ready() {\n    this.readyCount += 1;\n    if (this.readyCount === 2) {\n      this.scene.start('Title');\n    }\n  }\n}\n\n//# sourceURL=webpack://shooter-game/./src/scenes/preload-scene.js?");
+
+/***/ }),
+
+/***/ "./src/scenes/title-scene.js":
+/*!***********************************!*\
+  !*** ./src/scenes/title-scene.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ TitleScene\n/* harmony export */ });\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../phaser.min */ \"./src/phaser.min.js\");\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_phaser_min__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _helpers_buttons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers/buttons */ \"./src/helpers/buttons.js\");\n\n\n\nclass TitleScene extends (_phaser_min__WEBPACK_IMPORTED_MODULE_0___default().Scene) {\n  constructor() {\n    super('Title');\n  }\n\n  create() {\n    this.add.image(350, 320, 'titleBackground')\n      .setDisplaySize(700, 640);\n\n    this.add.image(345, 300, 'logo')\n      .setScale(0.27);\n\n    (0,_helpers_buttons__WEBPACK_IMPORTED_MODULE_1__.default)(350, 440, 'Start Game', this);\n    (0,_helpers_buttons__WEBPACK_IMPORTED_MODULE_1__.default)(350, 510, 'Instructions', this);\n    (0,_helpers_buttons__WEBPACK_IMPORTED_MODULE_1__.default)(350, 580, 'Leaderboard', this);\n\n    this.add.image(650, 590, 'titleBug')\n      .setScale(0.4)\n      .rotation = -16.5;\n\n    this.input.mouse.disableContextMenu();\n    this.input.on('pointerdown', (pointer, gameObjects) => {\n      if (pointer.leftButtonDown() && gameObjects.length > 0) {\n        switch (gameObjects[0].last.text) {\n          case 'Instructions':\n            this.scene.start('Instructions');\n            break;\n          case 'Leaderboard':\n            this.scene.start('Leaderboard');\n            break;\n          default:\n            this.scene.start('Game');\n        }\n      }\n    });\n  }\n}\n\n//# sourceURL=webpack://shooter-game/./src/scenes/title-scene.js?");
 
 /***/ })
 
