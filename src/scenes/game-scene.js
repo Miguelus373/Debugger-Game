@@ -1,5 +1,6 @@
 import Phaser from '../phaser.min';
 import releaseBug from '../helpers/release-bug';
+import keyCombo from '../helpers/key-combo';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -20,6 +21,8 @@ export default class GameScene extends Phaser.Scene {
       repeat: -1,
     });
 
-    releaseBug(5, this);
+    this.activeBugs = releaseBug(5, this);
+
+    keyCombo(this.activeBugs, this);
   }
 }

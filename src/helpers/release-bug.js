@@ -1,5 +1,6 @@
 const releaseBug = (n, game) => {
   let container;
+  const activeBugs = [];
   const bugGroup = game.physics.add.group();
   const words = ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Eco'];
 
@@ -23,9 +24,12 @@ const releaseBug = (n, game) => {
       .setVelocityY(Math.random() * 40)
       .setVelocityX(Math.random() * (container.x > 350 ? -100 : 100));
 
+    activeBugs.push(container);
+
     n -= 1;
   }
-  return container;
+
+  return activeBugs;
 };
 
 export { releaseBug as default };
