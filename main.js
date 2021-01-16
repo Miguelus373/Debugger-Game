@@ -97,6 +97,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/helpers/bug-destroy.js":
+/*!************************************!*\
+  !*** ./src/helpers/bug-destroy.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ bugDestroy\n/* harmony export */ });\nconst bugDestroy = (input, children, keyCodes) => {\n  let bugName = '';\n\n  input.forEach(key => {\n    // eslint-disable-next-line no-restricted-syntax\n    for (const code in keyCodes) {\n      if (keyCodes[code] === key) {\n        bugName += code;\n      }\n    }\n  });\n\n  const bug = children\n    .find(child => child.type === 'Container'\n          && child.list[1].text.toUpperCase() === bugName);\n\n  bug.destroy();\n};\n\n\n\n//# sourceURL=webpack://shooter-game/./src/helpers/bug-destroy.js?");
+
+/***/ }),
+
 /***/ "./src/helpers/buttons.js":
 /*!********************************!*\
   !*** ./src/helpers/buttons.js ***!
@@ -169,7 +180,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ GameScene\n/* harmony export */ });\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../phaser.min */ \"./src/phaser.min.js\");\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_phaser_min__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _helpers_release_bug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers/release-bug */ \"./src/helpers/release-bug.js\");\n/* harmony import */ var _helpers_key_combo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../helpers/key-combo */ \"./src/helpers/key-combo.js\");\n\n\n\n\nclass GameScene extends (_phaser_min__WEBPACK_IMPORTED_MODULE_0___default().Scene) {\n  constructor() {\n    super('Game');\n  }\n\n  create() {\n    this.add.image(350, 320, 'background').setDisplaySize(700, 640);\n    this.add.image(350, 590, 'base').setScale(0.15);\n\n    const turret = this.add.image(350, 575, 'turret');\n    turret.setScale(0.15);\n\n    this.anims.create({\n      key: 'go',\n      frames: this.anims.generateFrameNumbers('bugSprite', { start: 0, end: 3 }),\n      frameRate: 8,\n      repeat: -1,\n    });\n\n    this.activeBugs = (0,_helpers_release_bug__WEBPACK_IMPORTED_MODULE_1__.default)(5, this);\n\n    (0,_helpers_key_combo__WEBPACK_IMPORTED_MODULE_2__.default)(this.activeBugs, this);\n  }\n}\n\n//# sourceURL=webpack://shooter-game/./src/scenes/game-scene.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ GameScene\n/* harmony export */ });\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../phaser.min */ \"./src/phaser.min.js\");\n/* harmony import */ var _phaser_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_phaser_min__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _helpers_release_bug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers/release-bug */ \"./src/helpers/release-bug.js\");\n/* harmony import */ var _helpers_key_combo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../helpers/key-combo */ \"./src/helpers/key-combo.js\");\n/* harmony import */ var _helpers_bug_destroy__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helpers/bug-destroy */ \"./src/helpers/bug-destroy.js\");\n\n\n\n\n\nclass GameScene extends (_phaser_min__WEBPACK_IMPORTED_MODULE_0___default().Scene) {\n  constructor() {\n    super('Game');\n  }\n\n  create() {\n    this.add.image(350, 320, 'background').setDisplaySize(700, 640);\n    this.add.image(350, 590, 'base').setScale(0.15);\n\n    const turret = this.add.image(350, 575, 'turret');\n    turret.setScale(0.15);\n\n    this.anims.create({\n      key: 'go',\n      frames: this.anims.generateFrameNumbers('bugSprite', { start: 0, end: 3 }),\n      frameRate: 8,\n      repeat: -1,\n    });\n\n    this.activeBugs = (0,_helpers_release_bug__WEBPACK_IMPORTED_MODULE_1__.default)(5, this);\n\n    (0,_helpers_key_combo__WEBPACK_IMPORTED_MODULE_2__.default)(this.activeBugs, this);\n\n    this.input.keyboard.on('keycombomatch', (keyCombo) => {\n      (0,_helpers_bug_destroy__WEBPACK_IMPORTED_MODULE_3__.default)(keyCombo.keyCodes,\n        this.children.list,\n        (_phaser_min__WEBPACK_IMPORTED_MODULE_0___default().Input.Keyboard.KeyCodes));\n\n      // Display turret motion\n      // Display explotions\n    });\n  }\n}\n\n//# sourceURL=webpack://shooter-game/./src/scenes/game-scene.js?");
 
 /***/ }),
 
