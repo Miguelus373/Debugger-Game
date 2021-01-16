@@ -1,6 +1,7 @@
 import Phaser from '../phaser.min';
 import releaseBug from '../helpers/release-bug';
 import keyCombo from '../helpers/key-combo';
+import bugDestroy from '../helpers/bug-destroy';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -24,5 +25,14 @@ export default class GameScene extends Phaser.Scene {
     this.activeBugs = releaseBug(5, this);
 
     keyCombo(this.activeBugs, this);
+
+    this.input.keyboard.on('keycombomatch', (keyCombo) => {
+      bugDestroy(keyCombo.keyCodes,
+        this.children.list,
+        Phaser.Input.Keyboard.KeyCodes);
+
+      // Display turret motion
+      // Display explotions
+    });
   }
 }
