@@ -7,19 +7,21 @@ export default class TitleScene extends Phaser.Scene {
   }
 
   create() {
+    // set background, decoration and logo
     this.add.image(350, 320, 'titleBackground')
       .setDisplaySize(700, 640);
 
     this.add.image(345, 300, 'logo')
       .setScale(0.27);
 
-    createButton(350, 440, 'Start Game', this);
-    createButton(350, 510, 'Instructions', this);
-    createButton(350, 580, 'Leaderboard', this);
-
     this.add.image(650, 590, 'titleBug')
       .setScale(0.4)
       .rotation = -16.5;
+
+    // create buttons
+    createButton(350, 440, 'Start Game', this);
+    createButton(350, 510, 'Instructions', this);
+    createButton(350, 580, 'Leaderboard', this);
 
     this.input.mouse.disableContextMenu();
     this.input.on('pointerdown', (pointer, gameObjects) => {

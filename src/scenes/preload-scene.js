@@ -5,6 +5,7 @@ import turret from '../assets/turret.png';
 import logo from '../assets/logo.png';
 import titleBg from '../assets/title-bg.jpg';
 import titleBug from '../assets/spider.png';
+import getWords from '../helpers/get-words';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -12,9 +13,12 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    // add logo image
+    // add background image
     const bg = this.add.image(350, 320, 'background');
     bg.setDisplaySize(700, 640);
+
+    // retrieve data from the words api
+    this.apiData = getWords('https://random-word-api.herokuapp.com/word?number=1000');
 
     // display progress bar
     const progressBar = this.add.graphics();
@@ -79,7 +83,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(2000, this.ready, [], this);
 
-    // load assets needed in our game
+    // load assets needed
     this.load.image('logo', logo);
     this.load.image('titleBug', titleBug);
     this.load.image('titleBackground', titleBg);
@@ -97,9 +101,13 @@ export default class PreloaderScene extends Phaser.Scene {
     this.readyCount = 0;
   }
 
+  // start title scene when finish loading
   ready() {
     this.readyCount += 1;
     if (this.readyCount === 2) {
+      this.apiData
+        .then(data => localStorage.setItem('words', JSON.stringify(data)));
+
       this.scene.start('Title');
     }
   }

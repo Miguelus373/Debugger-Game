@@ -1,6 +1,5 @@
 const keyCombo = (activeBugs, game) => {
-  activeBugs.forEach(container => {
-    const keys = container.last.text;
+  activeBugs.forEach(keys => {
     game.input.keyboard.createCombo(keys, {
       resetOnWrongKey: true,
       maxKeyDelay: 0,
