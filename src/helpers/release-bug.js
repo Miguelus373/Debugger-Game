@@ -14,14 +14,14 @@ const releaseBug = (n, names, game) => {
     });
 
     // wrap bug and name in a container
-    const container = game.add.container(48 + (Math.random() * 604), 50, [bug, bugText]);
+    const container = game.add.container(48 + (Math.random() * 604), 60, [bug, bugText]);
     container.setSize(bug.width * 0.2, bug.height * 0.2);
 
     // add physics to container
     game.physics.world.enableBody(container);
     container.body.setBounce(1)
       .setCollideWorldBounds(true)
-      .setVelocityY((Math.random() * 42) + 5)
+      .setVelocityY((Math.random() * 45) + 10)
       .setVelocityX(Math.random() * (container.x > 350 ? -100 : 100));
 
     // update storage
