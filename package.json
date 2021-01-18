@@ -1,5 +1,5 @@
 {
-  "name": "shooter-game",
+  "name": "debugger-game",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -30,12 +30,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Miguelus373/Shooter-Game.git"
+    "url": "git+https://github.com/Miguelus373/Debugger-Game.git"
   },
   "author": "Miguel Uzcátegui",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Miguelus373/Shooter-Game/issues"
+    "url": "https://github.com/Miguelus373/Debugger-Game/issues"
   },
-  "homepage": "https://github.com/Miguelus373/Shooter-Game#readme"
+  "homepage": "https://github.com/Miguelus373/Debugger-Game#readme"
 }
