@@ -15,8 +15,14 @@ export default class GameScene extends Phaser.Scene {
     // set background and base
     this.add.image(350, 320, 'background').setDisplaySize(700, 640);
     this.add.image(350, 590, 'base').setScale(0.15);
+
     const boom = this.add.sprite(350, 350, 'boom');
     boom.visible = false;
+
+    const score = this.add.text(20, 20, 'Score: 0', {
+      fontSize: '20px',
+      fill: '#fff',
+    });
 
     this.turret = this.physics.add.sprite(350, 588, 'turret')
       .setScale(0.15);
@@ -54,6 +60,7 @@ export default class GameScene extends Phaser.Scene {
 
       bugDestroy(keyCombo.keyCodes,
         this.children.list,
+        score,
         boom,
         Phaser.Input.Keyboard.KeyCodes);
 
