@@ -1,4 +1,4 @@
-const bugDestroy = (input, children, keyCodes) => {
+const bugDestroy = (input, children, boom, keyCodes) => {
   let bugName = '';
 
   input.forEach(key => {
@@ -13,6 +13,10 @@ const bugDestroy = (input, children, keyCodes) => {
   const bug = children
     .find(child => child.type === 'Container'
           && child.list[1].text.toUpperCase() === bugName);
+
+  boom.x = bug.x;
+  boom.y = bug.y;
+  boom.anims.play('boom');
 
   bug.destroy();
 };

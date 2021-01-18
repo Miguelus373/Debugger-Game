@@ -1,8 +1,9 @@
 import Phaser from '../phaser.min';
 import bugSprite from '../assets/bug-sprite.png';
 import base from '../assets/base.png';
-import turret from '../assets/turret.png';
+import turret from '../assets/turret-sprite.png';
 import logo from '../assets/logo.png';
+import boom from '../assets/boom.png';
 import titleBg from '../assets/title-bg.jpg';
 import titleBug from '../assets/spider.png';
 import getWords from '../helpers/get-words';
@@ -88,12 +89,22 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('titleBug', titleBug);
     this.load.image('titleBackground', titleBg);
     this.load.image('base', base);
-    this.load.image('turret', turret);
+    this.load.spritesheet('boom', boom, {
+      frameWidth: 122,
+      frameHeight: 136,
+      endFrame: 0,
+    });
+    this.load.spritesheet('turret', turret, {
+      frameWidth: 271,
+      frameHeight: 700,
+      startFrame: 0,
+      endFrame: 2,
+    });
     this.load.spritesheet('bugSprite', bugSprite, {
       frameWidth: 478,
       frameHeight: 396,
-      startFrame: 1,
-      endFrame: 4,
+      startFrame: 0,
+      endFrame: 3,
     });
   }
 

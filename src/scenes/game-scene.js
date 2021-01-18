@@ -15,16 +15,33 @@ export default class GameScene extends Phaser.Scene {
     // set background and base
     this.add.image(350, 320, 'background').setDisplaySize(700, 640);
     this.add.image(350, 590, 'base').setScale(0.15);
+    const boom = this.add.sprite(350, 350, 'boom');
+    boom.visible = false;
 
-    this.turret = this.physics.add.image(350, 575, 'turret')
+    this.turret = this.physics.add.sprite(350, 588, 'turret')
       .setScale(0.15);
 
-    // create animation for bugs
+    // create animation for bugs, turret, and explosion
     this.anims.create({
       key: 'go',
-      frames: this.anims.generateFrameNumbers('bugSprite', { start: 0, end: 3 }),
+      frames: 'bugSprite',
       frameRate: 8,
       repeat: -1,
+    });
+
+    this.anims.create({
+      key: 'shoot',
+      frames: 'turret',
+      frameRate: 9,
+      repeat: 0,
+    });
+
+    this.anims.create({
+      key: 'boom',
+      frames: 'boom',
+      frameRate: 4,
+      showOnStart: true,
+      hideOnComplete: true,
     });
 
     // release bugs and creates keycombos
@@ -33,8 +50,11 @@ export default class GameScene extends Phaser.Scene {
 
     // destroy bug with the keycombo name
     this.input.keyboard.on('keycombomatch', (keyCombo) => {
+      this.turret.anims.play('shoot', true);
+
       bugDestroy(keyCombo.keyCodes,
         this.children.list,
+        boom,
         Phaser.Input.Keyboard.KeyCodes);
 
       this.activeBugs.pop();
