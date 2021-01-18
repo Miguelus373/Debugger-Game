@@ -2,7 +2,7 @@ import Phaser from '../phaser.min';
 import createButton from '../helpers/buttons';
 import loadScoreboard from '../helpers/load-scoreboard';
 
-export default class TitleScene extends Phaser.Scene {
+export default class LeaderboardScene extends Phaser.Scene {
   constructor() {
     super('Leaderboard');
   }
@@ -27,7 +27,7 @@ export default class TitleScene extends Phaser.Scene {
         score: 27,
       },
       {
-        user: 'Matt Mudock',
+        user: 'Matt Murdock',
         score: 5,
       },
     ];

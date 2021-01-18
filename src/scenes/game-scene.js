@@ -82,7 +82,6 @@ export default class GameScene extends Phaser.Scene {
 
   gameOver() {
     this.physics.pause();
-    this.input.keyboard.enabled = false;
     this.add.text(260, 290, 'Game Over', {
       fontSize: '30px',
       fill: '#fff',

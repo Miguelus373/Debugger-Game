@@ -6,7 +6,6 @@ import logo from '../assets/logo.png';
 import boom from '../assets/boom.png';
 import titleBg from '../assets/title-bg.jpg';
 import titleBug from '../assets/spider.png';
-import getWords from '../helpers/get-words';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -17,9 +16,6 @@ export default class PreloaderScene extends Phaser.Scene {
     // add background image
     const bg = this.add.image(350, 320, 'background');
     bg.setDisplaySize(700, 640);
-
-    // retrieve data from the words api
-    this.apiData = getWords('https://random-word-api.herokuapp.com/word?number=1000');
 
     // display progress bar
     const progressBar = this.add.graphics();
@@ -116,9 +112,6 @@ export default class PreloaderScene extends Phaser.Scene {
   ready() {
     this.readyCount += 1;
     if (this.readyCount === 2) {
-      this.apiData
-        .then(data => localStorage.setItem('words', JSON.stringify(data)));
-
       this.scene.start('Title');
     }
   }

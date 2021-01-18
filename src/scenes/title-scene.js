@@ -1,5 +1,6 @@
 import Phaser from '../phaser.min';
 import createButton from '../helpers/buttons';
+import getWords from '../helpers/get-words';
 
 export default class TitleScene extends Phaser.Scene {
   constructor() {
@@ -7,6 +8,9 @@ export default class TitleScene extends Phaser.Scene {
   }
 
   create() {
+    // retrieve data from the words api
+    this.apiData = getWords('https://random-word-api.herokuapp.com/word?number=1000');
+
     // set background, decoration and logo
     this.add.image(350, 320, 'titleBackground')
       .setDisplaySize(700, 640);
@@ -34,7 +38,11 @@ export default class TitleScene extends Phaser.Scene {
             this.scene.start('Leaderboard');
             break;
           default:
-            this.scene.start('Game');
+            this.apiData
+              .then(data => {
+                localStorage.setItem('words', JSON.stringify(data));
+                this.scene.start('Game');
+              });
         }
       }
     });
