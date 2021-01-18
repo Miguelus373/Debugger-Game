@@ -1,12 +1,37 @@
 import Phaser from '../phaser.min';
 import createButton from '../helpers/buttons';
+import loadScoreboard from '../helpers/load-scoreboard';
 
 export default class TitleScene extends Phaser.Scene {
   constructor() {
-    super('Instructions');
+    super('Leaderboard');
   }
 
   create() {
+    // retrive score data from the api
+    const scores = [
+      {
+        user: 'Karen Page',
+        score: 93,
+      },
+      {
+        user: 'Jessica Jones',
+        score: 67,
+      },
+      {
+        user: 'Danny Rand',
+        score: 50,
+      },
+      {
+        user: 'Luke Cage',
+        score: 27,
+      },
+      {
+        user: 'Matt Mudock',
+        score: 5,
+      },
+    ];
+
     // set background and logo
     this.add.image(350, 320, 'background')
       .setDisplaySize(700, 640);
@@ -14,32 +39,7 @@ export default class TitleScene extends Phaser.Scene {
     this.add.image(345, 70, 'logo')
       .setScale(0.27);
 
-    this.add.image(300, 195, 'bugSprite')
-      .setScale(0.2);
-    this.add.image(400, 250, 'bugSprite')
-      .setScale(0.2);
-
-    this.add.text(260, 135, 'Troyan', {
-      fontSize: '20px',
-      fill: '#0f0',
-    });
-    this.add.text(365, 190, 'Virus', {
-      fontSize: '20px',
-      fill: '#0f0',
-    });
-
-    this.add.graphics()
-      .fillStyle(0x222222, 0.6)
-      .fillRect(50, 330, 600, 165);
-
-    const instructions = ` Bugs are trying to infect your system!\n
-Use your keyboard to type the word on top\n
-   of them to shoot and destroy them!`;
-
-    this.add.text(80, 350, instructions, {
-      fontSize: '22px',
-      fill: '#fff',
-    });
+    loadScoreboard(scores, this);
 
     createButton(350, 580, 'Main Menu', this);
 
