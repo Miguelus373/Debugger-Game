@@ -1,4 +1,4 @@
-import Phaser from '../phaser.min';
+import Phaser from 'phaser';
 import bugSprite from '../assets/bug-sprite.png';
 import base from '../assets/base.png';
 import turret from '../assets/turret-sprite.png';
