@@ -1,4 +1,4 @@
-import Phaser from '../phaser.min';
+import Phaser from 'phaser';
 import createButton from '../helpers/buttons';
 import loadScoreboard from '../helpers/load-scoreboard';
 

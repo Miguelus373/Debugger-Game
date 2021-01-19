@@ -1,4 +1,4 @@
-import Phaser from '../phaser.min';
+import Phaser from 'phaser';
 import releaseBug from '../helpers/release-bug';
 import keyCombo from '../helpers/key-combo';
 import bugDestroy from '../helpers/bug-destroy';

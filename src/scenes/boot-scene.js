@@ -1,4 +1,4 @@
-import Phaser from '../phaser.min';
+import Phaser from 'phaser';
 import background from '../assets/bg.jpg';
 
 export default class BootScene extends Phaser.Scene {
