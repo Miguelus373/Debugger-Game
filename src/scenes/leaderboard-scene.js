@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import createButton from '../helpers/buttons';
 import loadScoreboard from '../helpers/load-scoreboard';
+import { getScores } from '../helpers/scores';
 
 export default class LeaderboardScene extends Phaser.Scene {
   constructor() {
@@ -9,28 +10,7 @@ export default class LeaderboardScene extends Phaser.Scene {
 
   create() {
     // retrive score data from the api
-    const scores = [
-      {
-        user: 'Karen Page',
-        score: 93,
-      },
-      {
-        user: 'Jessica Jones',
-        score: 67,
-      },
-      {
-        user: 'Danny Rand',
-        score: 50,
-      },
-      {
-        user: 'Luke Cage',
-        score: 27,
-      },
-      {
-        user: 'Matt Murdock',
-        score: 5,
-      },
-    ];
+    getScores().then(scores => loadScoreboard(scores, this));
 
     // set background and logo
     this.add.image(350, 320, 'background')
@@ -38,8 +18,6 @@ export default class LeaderboardScene extends Phaser.Scene {
 
     this.add.image(345, 70, 'logo')
       .setScale(0.27);
-
-    loadScoreboard(scores, this);
 
     createButton(350, 580, 'Main Menu', this);
 

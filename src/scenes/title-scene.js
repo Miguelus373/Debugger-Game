@@ -9,7 +9,11 @@ export default class TitleScene extends Phaser.Scene {
 
   create() {
     // retrieve data from the words api
-    this.apiData = getWords('https://random-word-api.herokuapp.com/word?number=1000');
+    this.apiData = getWords();
+
+    // show name input
+    this.nameInput = document.querySelector('.name-input');
+    this.nameInput.classList.toggle('hidden');
 
     // set background, decoration and logo
     this.add.image(350, 320, 'titleBackground')
@@ -32,12 +36,15 @@ export default class TitleScene extends Phaser.Scene {
       if (pointer.leftButtonDown() && gameObjects.length > 0) {
         switch (gameObjects[0].last.text) {
           case 'Instructions':
+            this.nameInput.classList.toggle('hidden');
             this.scene.start('Instructions');
             break;
           case 'Leaderboard':
+            this.nameInput.classList.toggle('hidden');
             this.scene.start('Leaderboard');
             break;
           default:
+            this.nameInput.classList.toggle('hidden');
             this.apiData
               .then(data => {
                 localStorage.setItem('words', JSON.stringify(data));

@@ -3,6 +3,8 @@ import releaseBug from '../helpers/release-bug';
 import keyCombo from '../helpers/key-combo';
 import bugDestroy from '../helpers/bug-destroy';
 import addColliders from '../helpers/add-colliders';
+import nameValidation from '../helpers/name-validation';
+import { submitScore } from '../helpers/scores';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -19,7 +21,7 @@ export default class GameScene extends Phaser.Scene {
     const boom = this.add.sprite(350, 350, 'boom');
     boom.visible = false;
 
-    const score = this.add.text(20, 20, 'Score: 0', {
+    this.score = this.add.text(20, 20, 'Score: 0', {
       fontSize: '20px',
       fill: '#fff',
     });
@@ -60,7 +62,7 @@ export default class GameScene extends Phaser.Scene {
 
       bugDestroy(keyCombo.keyCodes,
         this.children.list,
-        score,
+        this.score,
         boom,
         Phaser.Input.Keyboard.KeyCodes);
 
@@ -87,6 +89,9 @@ export default class GameScene extends Phaser.Scene {
       fill: '#fff',
     });
 
+    const name = document.querySelector('.name-input').value;
+
+    submitScore(nameValidation(name), parseInt(this.score.text.split(' ')[1], 10));
     this.time.delayedCall(3000, this.goToLeaderboard, [], this);
   }
 
