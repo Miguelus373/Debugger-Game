@@ -1,0 +1,25 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.name-input {
+  position: absolute;
+  top: 100px;
+  background: rgba(28, 161, 214, 0.92);
+  border: 2px solid #fff;
+  outline: none;
+  height: 2rem;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.name-input::placeholder {
+  color: #fff;
+}
