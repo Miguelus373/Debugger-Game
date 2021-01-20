@@ -34,6 +34,10 @@ Once the game has begun, bugs will try to catch you (you are the blue turret at 
 
 > To play this game online go [here](https://miguelus373.github.io/Debugger-Game/)
 
+## Game Design Document
+
+> To check the GDD go [here](https://github.com/Miguelus373/Debugger-Game/blob/shooter/GameDesignDocument.md)
+
 ## How to Install
 
 > If you want to have this game on your local machine just follow these simple steps

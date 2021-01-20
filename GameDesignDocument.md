@@ -1,6 +1,21 @@
 # Debugger Game
 
+![screenshot](./game-screenshot.png)
+
 **Author: Miguel Uzcátegui**
+
+# Table of contents
+
+- [Overview](#Overview)
+- [Third party applications](#Third-party-applications)
+- [Gameplay](#Gameplay)
+- [Main Menu](#Main-Menu)
+- [Scenes](#Scenes)
+- [Game Characters](#Game-Characters)
+  - [Player](#Player)
+  - [Bugs](#Bugs)
+- [Health](#Health)
+- [Scoring](#Scoring)
 
 ## Overview
 
@@ -8,13 +23,7 @@ You are a turret keeping guard of a sweet system. Suddenly, bugs start trying to
 
 You need to start shooting them to save your system. You are its only hope! As long as you are alive your system will survive. Start typing and don't let those bugs get you.
 
-## Gameplay
-
-- Use your keyboard to type the word on top of the bugs as fast as you can
-
-![screenshot](./keyboard.png)
-  
-### Third party applications
+## Third party applications
 
 - Phaser 3 framework
 - JavaScript ES6
@@ -22,6 +31,12 @@ You need to start shooting them to save your system. You are its only hope! As l
 - Webpack
 - Babel
 - Random Words APi
+
+## Gameplay
+
+- Use your keyboard to type the word on top of the bugs as fast as you can
+
+![screenshot](./keyboard.png)
 
 ## Main Menu
 
